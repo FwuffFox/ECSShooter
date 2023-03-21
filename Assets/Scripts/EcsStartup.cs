@@ -1,4 +1,5 @@
 using System;
+using ECSShooter.Services;
 using ECSShooter.Systems;
 using ECSShooter.Systems.Player;
 using Leopotam.EcsLite;
@@ -23,14 +24,15 @@ namespace ECSShooter {
             _updateSystems
                 .Add(new PlayerInitSystem())
                 .Add(new PlayerInputSystem())
+                .Add(new AnimateMovementSystem())
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
-                .Inject(_sceneData, _gameData)
+                .Inject(_sceneData, _gameData, new InputService())
                 .Init();
             
             _fixedUpdateSystems
-                .Add(new MoveSystem())
+                .Add(new MovementSystem())
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
