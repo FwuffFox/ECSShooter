@@ -22,7 +22,7 @@ namespace ECSShooter.Infrastructure
 
         private void EnterBootstrapScene()
         {
-            
+            _gameStateMachine.Enter<LoadLevelState, string>("Main");
         }
 
         public void Exit()

@@ -19,6 +19,12 @@ namespace ECSShooter.Services
         
         public IEnumerator LoadScene(string name, Action onLoaded = null)
         {
+            if (SceneManager.GetActiveScene().name == name)
+            {
+                onLoaded?.Invoke();
+                yield break;
+            }
+
             AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync(name);
 
             while (!loadSceneAsync.isDone)
