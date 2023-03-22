@@ -13,8 +13,14 @@ namespace ECSShooter.Infrastructure
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader)
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader),
             };
+        }
+
+        public void Run()
+        {
+            _activeState?.Run();
         }
 
         public void Enter<TState>() where TState : class, IState

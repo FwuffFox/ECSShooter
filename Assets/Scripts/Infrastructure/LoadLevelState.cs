@@ -1,4 +1,5 @@
 using ECSShooter.Services;
+using UnityEngine;
 
 namespace ECSShooter.Infrastructure
 {
@@ -21,7 +22,12 @@ namespace ECSShooter.Infrastructure
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            
+        }
+
+        public void Run()
+        {
+            Debug.Log("Update from " + nameof(LoadLevelState));
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ECSShooter.Infrastructure
     public interface IExitableState
     {
         void Exit();
+        void Run();
     }
 
     public interface IPayloadedState<TPayload> : IExitableState
