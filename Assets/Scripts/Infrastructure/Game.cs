@@ -8,7 +8,9 @@ namespace ECSShooter.Infrastructure
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
+            GameStateMachine = new GameStateMachine(
+                sceneLoader: new SceneLoader(coroutineRunner),
+                coroutineRunner: coroutineRunner);
         }
     }
 }

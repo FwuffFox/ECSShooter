@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ECSShooter.Infrastructure
 {
-    public class BootstrapState : IState
+    public class BootstrapState : IEnterState, IExitState, IUpdatableState
     {
         private const string Bootstrap = "Bootstrap";
         private readonly GameStateMachine _gameStateMachine;
@@ -31,7 +31,7 @@ namespace ECSShooter.Infrastructure
             
         }
 
-        public void Run()
+        public void Update()
         {
             Debug.Log("Update from " + nameof(BootstrapState));
         }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace ECSShooter.Infrastructure
 {
-    internal  class LoadLevelState : IPayloadedState<string>
+    internal  class LoadLevelState : IPayloadedEnterState<string>, IExitState, IUpdatableState
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
-        private IState _stateImplementation;
+        private IEnterState _enterStateImplementation;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
@@ -25,7 +25,7 @@ namespace ECSShooter.Infrastructure
             
         }
 
-        public void Run()
+        public void Update()
         {
             Debug.Log("Update from " + nameof(LoadLevelState));
         }

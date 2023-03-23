@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace ECSShooter.Infrastructure
@@ -16,11 +15,6 @@ namespace ECSShooter.Infrastructure
             _game = new Game(this);
             _game.GameStateMachine.Enter<BootstrapState>();
             DontDestroyOnLoad(this);
-        }
-
-        private void Update()
-        {
-            _game?.GameStateMachine?.Run();
         }
     }
 }
