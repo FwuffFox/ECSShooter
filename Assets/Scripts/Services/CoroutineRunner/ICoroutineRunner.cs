@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ECSShooter
+namespace ECSShooter.Services.CoroutineRunner
 {
     public interface ICoroutineRunner
     {

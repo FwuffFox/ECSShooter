@@ -1,21 +1,17 @@
 using System;
 using ECSShooter.Services;
 using UnityEngine;
+using Zenject;
 
 namespace ECSShooter.Infrastructure
 {
     public class BootstrapState : IEnterState, IExitState, IUpdatableState
     {
         private const string Bootstrap = "Bootstrap";
-        private readonly GameStateMachine _gameStateMachine;
-        private SceneLoader _sceneLoader;
-
-        public BootstrapState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
-        {
-            _gameStateMachine = gameStateMachine;
-            _sceneLoader = sceneLoader;
-        }
-
+        
+        [Inject] private readonly GameStateMachine _gameStateMachine;
+        [Inject] private ISceneLoader _sceneLoader;
+        
         public void Enter()
         {
             _sceneLoader.Load(Bootstrap, EnterBootstrapScene);

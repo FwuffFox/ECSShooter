@@ -1,36 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ECSShooter.Services;
+using ECSShooter.Factories;
+using ECSShooter.Services.CoroutineRunner;
 using UnityEngine;
 
 namespace ECSShooter.Infrastructure
 {
     public class GameStateMachine
     {
-        private readonly Dictionary<Type, IStateBase> _states;
+        private Dictionary<Type, IStateBase> _states;
         private IStateBase _activeState;
-        private readonly ICoroutineRunner _coroutineRunner;
-
         private Coroutine _runningUpdateCoroutine;
+        
+        private readonly ICoroutineRunner _coroutineRunner;
+        private readonly StateFactory _stateFactory;
 
-        public GameStateMachine(SceneLoader sceneLoader, ICoroutineRunner coroutineRunner)
+        public GameStateMachine(ICoroutineRunner coroutineRunner, StateFactory stateFactory)
         {
             _coroutineRunner = coroutineRunner;
-            _states = new Dictionary<Type, IStateBase>
-            {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader),
-            };
+            _stateFactory = stateFactory;
         }
-        
+
+        public void CreateStates() => _states = _stateFactory.CreateStates();
+
         public void Enter<TState>() where TState : class, IEnterState
         {
             TState newState = ChangeState<TState>();
             newState.Enter();
         }
 
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedEnterState<TPayload>
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadEnterState<TPayload>
         {
             TState newState = ChangeState<TState>();
             newState.Enter(payload);

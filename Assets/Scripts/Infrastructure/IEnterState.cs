@@ -15,7 +15,7 @@ namespace ECSShooter.Infrastructure
         void Enter();
     }
 
-    public interface IPayloadedEnterState<in TPayload> : IStateBase
+    public interface IPayloadEnterState<in TPayload> : IStateBase
     {
         void Enter(TPayload payload);
     }

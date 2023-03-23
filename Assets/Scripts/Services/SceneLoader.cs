@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using ECSShooter.Services.CoroutineRunner;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace ECSShooter.Services
 {
-    public class SceneLoader
+    public class SceneLoader : ISceneLoader
     {
         private readonly ICoroutineRunner _coroutineRunner;
 

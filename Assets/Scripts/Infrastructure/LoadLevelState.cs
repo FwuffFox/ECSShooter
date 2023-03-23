@@ -1,23 +1,26 @@
 using ECSShooter.Services;
 using UnityEngine;
+using Zenject;
 
 namespace ECSShooter.Infrastructure
 {
-    internal  class LoadLevelState : IPayloadedEnterState<string>, IExitState, IUpdatableState
+    internal  class LoadLevelState : IPayloadEnterState<string>, IExitState, IUpdatableState
     {
-        private readonly GameStateMachine _gameStateMachine;
-        private readonly SceneLoader _sceneLoader;
+        [Inject] private readonly GameStateMachine _gameStateMachine;
+        [Inject] private readonly ISceneLoader _sceneLoader;
+        
         private IEnterState _enterStateImplementation;
-
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
-        {
-            _gameStateMachine = gameStateMachine;
-            _sceneLoader = sceneLoader;
-        }
+        
         
         public void Enter(string sceneName)
         {
-            _sceneLoader.Load(sceneName);
+            _sceneLoader.Load(sceneName, OnSceneLoad);
+        }
+
+        private void OnSceneLoad()
+        {
+            Object.Instantiate(Resources.Load<GameObject>("Prefabs/Player"),
+                Vector3.zero, Quaternion.identity);
         }
 
         public void Exit()
