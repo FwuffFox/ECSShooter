@@ -20,9 +20,9 @@ namespace ECSShooter
 
         public void Initialize()
         {
-            Container.Resolve<GameStateMachine>()
-                .With(x => x.CreateStates())
-                .Enter<BootstrapState>();
+            GameStateMachine gameStateMachine = Container.Resolve<GameStateMachine>();
+            gameStateMachine.CreateStates();
+            gameStateMachine.Enter<BootstrapState>();
         }
         
         public override void InstallBindings()
@@ -31,13 +31,13 @@ namespace ECSShooter
             Container.Bind<ISceneLoader>()
                 .To<SceneLoader>().AsSingle();
 
-            Container.Bind<GameStateMachine>()
-                .AsSingle().NonLazy();
-
             Container.Bind<ICoroutineRunner>()
                 .To<CoroutineRunner>()
                 .FromInstance(_coroutineRunner)
                 .AsSingle();
+            
+            Container.Bind<GameStateMachine>()
+                .AsSingle().NonLazy();
         }
 
         private void InstallFactories()
