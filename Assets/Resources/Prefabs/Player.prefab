@@ -1262,7 +1262,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.78, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &-5892896401087087485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1278,7 @@ MonoBehaviour:
   _characterController: {fileID: -517989050682948471}
   _animator: {fileID: 4122405800222202427}
   _rotationLerp: 0.1
+  _speed: 3
 --- !u!54 &1913710156
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ECSShooter.Services.Input
@@ -16,5 +17,9 @@ namespace ECSShooter.Services.Input
             Vector2 readValue = _playerInput.InGame.Movement.ReadValue<Vector2>();
             return new Vector3(readValue.x, 0, readValue.y);
         }
+
+        public bool IsJumpButtonPressed() => _playerInput.InGame.Jump.IsPressed();
+
+        public bool IsRunButtonPressed() => _playerInput.InGame.Run.IsPressed();
     }
 }

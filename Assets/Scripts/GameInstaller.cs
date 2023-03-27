@@ -3,6 +3,7 @@ using ECSShooter.Infrastructure;
 using ECSShooter.Services;
 using ECSShooter.Services.CoroutineRunner;
 using ECSShooter.Services.Input;
+using ECSShooter.Services.ObjectSpawner;
 using UnityEngine;
 using Zenject;
 
@@ -38,6 +39,8 @@ namespace ECSShooter
                 .AsSingle();
 
             Container.Bind<InputService>().AsSingle();
+            Container.Bind<PrefabFactory>().AsSingle();
+            Container.Bind<UnitSpawner>().AsSingle();
             
             Container.Bind<GameStateMachine>()
                 .AsSingle().NonLazy();
