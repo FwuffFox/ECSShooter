@@ -5,7 +5,7 @@ using Zenject;
 
 namespace ECSShooter.Infrastructure
 {
-    public class BootstrapState : IEnterState, IExitState, IUpdatableState
+    public class BootstrapState : IEnterState, IExitState
     {
         private const string Bootstrap = "Bootstrap";
         
@@ -25,11 +25,6 @@ namespace ECSShooter.Infrastructure
         public void Exit()
         {
             
-        }
-
-        public void Update()
-        {
-            Debug.Log("Update from " + nameof(BootstrapState));
         }
     }
 }

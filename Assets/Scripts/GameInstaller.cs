@@ -2,6 +2,7 @@ using ECSShooter.Factories;
 using ECSShooter.Infrastructure;
 using ECSShooter.Services;
 using ECSShooter.Services.CoroutineRunner;
+using ECSShooter.Services.Input;
 using UnityEngine;
 using Zenject;
 
@@ -35,6 +36,8 @@ namespace ECSShooter
                 .To<CoroutineRunner>()
                 .FromInstance(_coroutineRunner)
                 .AsSingle();
+
+            Container.Bind<InputService>().AsSingle();
             
             Container.Bind<GameStateMachine>()
                 .AsSingle().NonLazy();
