@@ -1,12 +1,15 @@
 using System;
+using ECSShooter.Data;
 using ECSShooter.Services.Input;
+using ECSShooter.Services.PersistentProgress;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace ECSShooter.Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, ISaveProgress
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Animator _animator;
@@ -32,6 +35,26 @@ namespace ECSShooter.Logic.Player
             float speed = _input.IsRunButtonPressed() ? _speed * 2 : _speed;
             _animator.SetBool(Running, _input.IsRunButtonPressed());
             _characterController.SimpleMove(movement * speed);
+        }
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if (progress.WorldData.PositionOnLevel.Level != SceneManager.GetActiveScene().name)
+                return;
+            if (progress.WorldData.PositionOnLevel.Position == null)
+                return;
+            
+            Vector3 savedPosition = progress.WorldData.PositionOnLevel.Position.AsUnityVector3();
+            _characterController.enabled = false;
+            transform.position = savedPosition;
+            _characterController.enabled = true;
+        }
+
+        public void SaveProgress(PlayerProgress progress)
+        {
+            progress.WorldData.PositionOnLevel = new PositionOnLevel(
+                SceneManager.GetActiveScene().name,
+                transform.position.AsVectorData());
         }
     }
 }
