@@ -2,7 +2,7 @@ using ECSShooter.Data;
 
 namespace ECSShooter.Services.PersistentProgress
 {
-    public interface ILoadProgress
+    public interface IProgressReader
     {
         void LoadProgress(PlayerProgress progress);
     }

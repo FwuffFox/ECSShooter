@@ -9,7 +9,7 @@ using Zenject;
 namespace ECSShooter.Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerMovement : MonoBehaviour, ISaveProgress, ILoadProgress
+    public class PlayerMovement : MonoBehaviour, IProgressWriter, IProgressReader
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Animator _animator;

@@ -9,8 +9,8 @@ namespace ECSShooter.Services.ObjectSpawner
     {
         [Inject] private PrefabFactory _prefabFactory;
 
-        public List<ISaveProgress> ProgressWriters { get; } = new ();
-        public List<ILoadProgress> ProgressReaders { get; } = new ();
+        public List<IProgressWriter> ProgressWriters { get; } = new ();
+        public List<IProgressReader> ProgressReaders { get; } = new ();
         public GameObject Player { get; private set; }
 
         public GameObject SpawnPlayer()
@@ -22,11 +22,11 @@ namespace ECSShooter.Services.ObjectSpawner
 
         private void RegisterProgressWatchers()
         {
-            foreach (ISaveProgress saveProgress in Player.GetComponentsInChildren<ISaveProgress>())
+            foreach (IProgressWriter saveProgress in Player.GetComponentsInChildren<IProgressWriter>())
             {
                 ProgressWriters.Add(saveProgress);
             }
-            foreach (ILoadProgress loadProgress in Player.GetComponentsInChildren<ILoadProgress>())
+            foreach (IProgressReader loadProgress in Player.GetComponentsInChildren<IProgressReader>())
             {
                 ProgressReaders.Add(loadProgress);
             }

@@ -2,7 +2,7 @@ using ECSShooter.Data;
 
 namespace ECSShooter.Services.PersistentProgress
 {
-    public interface ISaveProgress
+    public interface IProgressWriter
     {
         void SaveProgress(PlayerProgress progress);
     }
