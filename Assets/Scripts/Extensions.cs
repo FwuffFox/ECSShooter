@@ -18,4 +18,9 @@ namespace ECSShooter
         public static Vector3Data AsVectorData(this Vector3 data) => new (data);
         public static Vector3 AsUnityVector3(this Vector3Data data) => new(data.X, data.Y, data.Z);
     }
+
+    public static class JsonExtensions
+    {
+        public static T DeserializeFromJson<T>(this string data) => JsonUtility.FromJson<T>(data);
+    }
 }

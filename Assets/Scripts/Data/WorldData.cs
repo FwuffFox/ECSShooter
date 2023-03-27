@@ -6,17 +6,10 @@ namespace ECSShooter.Data
     public class WorldData
     {
         public PositionOnLevel PositionOnLevel;
-    }
 
-    public class PositionOnLevel
-    {
-        public string Level;
-        public Vector3Data Position;
-        
-        public PositionOnLevel(string level, Vector3Data position)
+        public WorldData(string levelName)
         {
-            Level = level;
-            Position = position;
+            PositionOnLevel = new PositionOnLevel(levelName);
         }
     }
 }

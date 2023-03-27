@@ -4,7 +4,7 @@ using ECSShooter.Services.ObjectSpawner;
 using UnityEngine;
 using Zenject;
 
-namespace ECSShooter.Infrastructure
+namespace ECSShooter.Infrastructure.States
 {
     internal class LoadLevelState : IPayloadEnterState<string>, IExitState
     {
@@ -17,6 +17,7 @@ namespace ECSShooter.Infrastructure
         
         public void Enter(string sceneName)
         {
+            _unitSpawner.Cleanup();
             _sceneLoader.Load(sceneName, OnSceneLoad);
         }
 

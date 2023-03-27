@@ -1,9 +1,7 @@
-using System;
 using ECSShooter.Services;
-using UnityEngine;
 using Zenject;
 
-namespace ECSShooter.Infrastructure
+namespace ECSShooter.Infrastructure.States
 {
     public class BootstrapState : IEnterState, IExitState
     {
@@ -19,7 +17,7 @@ namespace ECSShooter.Infrastructure
 
         private void EnterBootstrapScene()
         {
-            _gameStateMachine.Enter<LoadLevelState, string>("Main");
+            _gameStateMachine.Enter<LoadProgressState>();
         }
 
         public void Exit()
