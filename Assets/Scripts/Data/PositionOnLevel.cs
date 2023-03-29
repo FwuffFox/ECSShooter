@@ -1,5 +1,8 @@
+using System;
+
 namespace ECSShooter.Data
 {
+    [Serializable]
     public class PositionOnLevel
     {
         public string Level;
