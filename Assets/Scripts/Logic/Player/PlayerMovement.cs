@@ -55,6 +55,8 @@ namespace ECSShooter.Logic.Player
             progress.WorldData.PositionOnLevel = new PositionOnLevel(
                 SceneManager.GetActiveScene().name,
                 transform.position.AsVectorData());
+            
+            print(transform.position);
         }
     }
 }

@@ -2648,6 +2648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86d41e854e349e193a6838364fee747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 900950632}
 --- !u!850595691 &1138961110
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2820,6 +2821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86d41e854e349e193a6838364fee747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 900950632}
 --- !u!1 &1427033538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,13 +2995,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86d41e854e349e193a6838364fee747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 900950632}
 --- !u!43 &1953137703
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-101554
+  m_Name: pb_Mesh29824
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
