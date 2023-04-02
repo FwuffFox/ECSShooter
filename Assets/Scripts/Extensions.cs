@@ -22,5 +22,7 @@ namespace ECSShooter
     public static class JsonExtensions
     {
         public static T DeserializeFromJson<T>(this string data) => JsonUtility.FromJson<T>(data);
+        public static string ToJson<T>(this T data, bool pretty = false)
+            => JsonUtility.ToJson(data, pretty);
     }
 }

@@ -24,7 +24,7 @@ namespace ECSShooter.Logic
 
         private void LateUpdate()
         {
-            if (_target == null)
+            if (!_target)
                 return;
         
             transform.position = Vector3.Lerp(transform.position, _target.transform.position + _cameraDistance,
@@ -33,7 +33,7 @@ namespace ECSShooter.Logic
 
         private void OnValidate()
         {
-            if (_target == null)
+            if (!_target)
                 return;
             transform.position = _target.transform.position + _cameraDistance;
         }

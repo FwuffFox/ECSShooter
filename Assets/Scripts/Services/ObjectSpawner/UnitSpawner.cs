@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ECSShooter.Services.PersistentProgress;
 using UnityEngine;
@@ -11,12 +12,15 @@ namespace ECSShooter.Services.ObjectSpawner
 
         public List<IProgressWriter> ProgressWriters { get; } = new ();
         public List<IProgressReader> ProgressReaders { get; } = new ();
+
+        public event Action<GameObject> PlayerCreated; 
         public GameObject Player { get; private set; }
 
         public GameObject SpawnPlayer()
         {
             Player = _prefabFactory.CreatePlayer(Vector3.up);
             RegisterProgressWatchers();
+            PlayerCreated?.Invoke(Player);
             return Player;
         }
 
